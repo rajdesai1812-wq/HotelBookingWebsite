@@ -1,0 +1,136 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> stay easy HOTEL Booking</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+        body { background:#f9f9f9; color:#333; }
+        a { text-decoration:none; }
+
+        /* Navbar */
+        nav { background:#1a3c5e; padding:16px 30px; display:flex; justify-content:space-between; align-items:center; }
+        nav .logo { color:white; font-size:22px; font-weight:bold; }
+        nav .logo span { color:#f0b429; }
+        nav a { color:#ccc; font-size:15px; margin-left:22px; }
+        nav a:hover { color:#f0b429; }
+
+        /* Hero */
+        .hero { position:relative; text-align:center; }
+        .hero img { width:100%; height:460px; object-fit:cover; filter:brightness(0.55); display:block; }
+        .hero-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; width:90%; }
+        .hero-text h1 { font-size:40px; margin-bottom:12px; }
+        .hero-text p  { font-size:17px; margin-bottom:26px; }
+        .btn-gold   { background:#f0b429; color:#1a3c5e; padding:13px 32px; border-radius:4px; font-weight:bold; font-size:15px; }
+        .btn-white  { border:2px solid white; color:white; padding:11px 32px; border-radius:4px; font-weight:bold; font-size:15px; margin-left:12px; }
+
+        /* Stats */
+        .stats { background:#1a3c5e; display:flex; }
+        .stat  { flex:1; text-align:center; padding:28px 10px; border-right:1px solid rgba(255,255,255,0.15); }
+        .stat:last-child { border-right:none; }
+        .stat b { display:block; font-size:28px; color:#f0b429; }
+        .stat p { color:#ccc; font-size:13px; margin-top:5px; }
+
+        /* Sections */
+        .section { padding:56px 36px; }
+        .grey { background:#eaf0f6; }
+        .dark { background:#1a3c5e; }
+        h2.title { text-align:center; font-size:30px; color:#1a3c5e; margin-bottom:6px; }
+        .dark h2.title { color:white; }
+        p.sub  { text-align:center; color:#888; font-size:14px; margin-bottom:36px; }
+        .dark p.sub { color:#aac4db; }
+
+        /* Grids */
+        .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+        .grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+        .col2  { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+
+        /* Property card */
+        .card { background:white; border:1px solid #ddd; border-radius:6px; overflow:hidden; }
+        .card img { width:100%; height:190px; object-fit:cover; display:block; }
+        .card-body { padding:16px; }
+        .price { font-size:20px; color:#f0b429; font-weight:bold; margin-bottom:4px; }
+        .card-body h3 { font-size:16px; color:#1a3c5e; margin-bottom:3px; }
+        .loc  { font-size:12px; color:#999; margin-bottom:10px; }
+        .desc { font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; }
+        .feats { font-size:12px; color:#777; }
+        .badge { display:inline-block; font-size:11px; color:white; padding:3px 9px; border-radius:3px; margin-bottom:8px; }
+
+        /* Agent */
+        .agent { text-align:center; padding:20px 14px; }
+        .agent img { width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid #f0b429; margin:0 auto 12px; display:block; }
+        .agent h3 { color:#1a3c5e; font-size:16px; margin-bottom:3px; }
+        .agent .role { color:#f0b429; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+        .agent p { color:#666; font-size:13px; line-height:1.6; }
+
+        /* Testimonial */
+        .tcard { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-top:3px solid #f0b429; border-radius:6px; padding:24px; }
+        .tcard .stars { color:#f0b429; font-size:16px; margin-bottom:12px; }
+        .tcard q { display:block; color:#dce8f0; font-size:13px; line-height:1.8; margin-bottom:18px; }
+        .tcard .author { display:flex; align-items:center; gap:10px; }
+        .tcard .author img { width:42px; height:42px; border-radius:50%; object-fit:cover; }
+        .tcard .author b { display:block; color:white; font-size:13px; }
+        .tcard .author span { color:#aac4db; font-size:12px; }
+
+        /* About */
+        .about-text h3 { font-size:24px; color:#1a3c5e; margin-bottom:14px; }
+        .about-text p  { font-size:14px; color:#555; line-height:1.8; margin-bottom:12px; }
+        .checks { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; font-size:13px; color:#555; }
+
+        /* Contact */
+        .form-wrap { background:white; border:1px solid #ddd; border-radius:6px; padding:32px; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:14px; }
+        label { display:block; font-size:11px; color:#1a3c5e; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; }
+        input, select, textarea { width:100%; padding:10px 13px; border:1px solid #ccc; border-radius:4px; font-size:14px; }
+        textarea { height:110px; resize:vertical; }
+        .fg { margin-bottom:14px; }
+        .contact-info img { border-radius:6px; width:100%; margin-bottom:20px; }
+        .contact-info h3 { font-size:20px; color:#1a3c5e; margin-bottom:10px; }
+        .contact-info p  { font-size:14px; color:#555; line-height:2; }
+
+        /* Footer */
+        footer { background:#0f2338; padding:40px 36px 18px; }
+        .fg4 { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:28px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        footer h4 { color:#f0b429; font-size:12px; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+        footer p, footer a { color:#7a9ab5; font-size:14px; line-height:2; display:block; }
+        footer a:hover { color:#f0b429; }
+        .flogo { color:white; font-size:20px; font-weight:bold; margin-bottom:10px; }
+        .flogo span { color:#f0b429; }
+        .fcopy { text-align:center; color:#3d5a6e; font-size:13px; margin-top:18px; }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo"> stay easy <span>Realty</span> HOTEL</div>
+    <div>
+        <a href="Home.html">Home</a>
+        <a href="file:///C:/Users/rajde/Desktop/final%20project/about.html">About Us</a>
+        <a href="file:///C:/Users/rajde/Desktop/final%20project/booking.html">Booking</a>
+        <a href="file:///C:/Users/rajde/Desktop/final%20project/Feedback.html">Feedback</a>
+        <a href="file:///C:/Users/rajde/Desktop/final%20project/help.html">Help</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div id="home" class="hero">
+    <img src=" https://th.bing.com/th/id/OIP.ua_yQyYUJGoiVY05rLxMAgHaER?w=294&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="House">
+    <div class="hero-text">
+        <h1>Find Your perfect stay</h1>
+        <p>Book comfertable hotels at the best price across Maharashtra.</p>
+        <a href="#rooms" class="btn-gold">Browse Properties</a>
+        <a href="#contact" class="btn-white">Contact Us</a>
+    </div>
+</div>
+<!-- STATS -->
+<div class="stats">
+    <div class="stat"><b>10+</b><p>rooms Available</p></div>
+    <div class="stat"><b>1000+</b><p>Happy Clients</p></div>
+    <div class="stat"><b>24/7</b><p>customer support</p></div>
+    <div class="stat"><b>5</b><p>location</p></div>
+</div>
+</body>
+</html>
